@@ -1,31 +1,36 @@
-import clsx from 'clsx';
-import { useState } from 'react';
-import s from './app.module.scss';
-import reactLogo from './assets/react.svg';
-import { ReactComponent as TypescriptLogo } from './assets/typescript.svg';
+import { data } from './utils/data';
+import AppHeader from '../components/app-header';
+import BurgerIngredients from '../components/burger-ingredients';
+import BurgerConstructor from '../components/burger-constructor';
+import style from './app.module.scss';
+
+export interface IData {
+	_id: string;
+	name: string;
+	type: string;
+	proteins: number;
+	fat: number;
+	carbohydrates: number;
+	calories: number;
+	price: number;
+	image: string;
+	image_mobile: string;
+	image_large: string;
+	__v: number;
+}
 
 export const App = () => {
-	// const num = 0
-	const [count, setCount] = useState(0);
+	const buns = data.filter((it) => it.type === 'bun');
+	const sauces = data.filter((it) => it.type === 'sauce');
+	const mains = data.filter((it) => it.type === 'main');
+	const bunCurrent = buns[1];
+
 	return (
-		<div className='page'>
-			<div className='logo-wrapper'>
-				<a href='https://reactjs.org' target='_blank' rel='noreferrer'>
-					<img
-						src={reactLogo}
-						className={clsx(s.logo, s.react)}
-						alt='React logo'
-					/>
-				</a>
-				<a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
-					<TypescriptLogo className={s.logo} />
-				</a>
-			</div>
-			<h1>React + TS</h1>
-			<div className={s.card}>
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
+		<div className={style.app}>
+			<AppHeader />
+			<div className={style.content}>
+				<BurgerIngredients buns={buns} sauces={sauces} mains={mains} />
+				<BurgerConstructor bun={bunCurrent} dataList={[...sauces, ...mains]} />
 			</div>
 		</div>
 	);

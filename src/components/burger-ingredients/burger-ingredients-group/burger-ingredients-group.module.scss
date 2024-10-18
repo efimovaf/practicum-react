@@ -1,0 +1,6 @@
+.items {
+	composes: pr-4 pl-4 from global;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+}

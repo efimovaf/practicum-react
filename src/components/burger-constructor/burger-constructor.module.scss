@@ -1,0 +1,7 @@
+.main {
+	composes: pl-4 pr-4 pt-25 from global;
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+	gap: 40px;
+}

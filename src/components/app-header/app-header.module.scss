@@ -1,29 +1,32 @@
-.main {
+.mainHeader {
 	min-height: 88px;
 }
 
-.content {
-	display: flex;
-	align-items: center;
-	position: relative;
+.nav {
 	min-height: inherit;
 	max-width: 1350px;
-	left: 50%;
-	transform: translateX(-50%);
+	margin: 0 auto;
+}
+
+.ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+	min-height: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+.li {
+	flex: 1;
 }
 
 .navigationGroup {
 	display: flex;
-	flex: 1;
 	gap: 8px;
 }
 
-.logo {
-	flex: 1;
-}
-
-.account {
+.profile {
 	display: flex;
-	flex: 1;
 	justify-content: flex-end;
 }

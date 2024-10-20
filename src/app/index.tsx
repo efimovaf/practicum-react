@@ -4,21 +4,6 @@ import BurgerIngredients from '../components/burger-ingredients';
 import BurgerConstructor from '../components/burger-constructor';
 import style from './app.module.scss';
 
-export interface IData {
-	_id: string;
-	name: string;
-	type: string;
-	proteins: number;
-	fat: number;
-	carbohydrates: number;
-	calories: number;
-	price: number;
-	image: string;
-	image_mobile: string;
-	image_large: string;
-	__v: number;
-}
-
 export const App = () => {
 	const buns = data.filter((it) => it.type === 'bun');
 	const sauces = data.filter((it) => it.type === 'sauce');
@@ -28,10 +13,10 @@ export const App = () => {
 	return (
 		<div className={style.app}>
 			<AppHeader />
-			<div className={style.content}>
+			<main className={style.main}>
 				<BurgerIngredients buns={buns} sauces={sauces} mains={mains} />
 				<BurgerConstructor bun={bunCurrent} dataList={[...sauces, ...mains]} />
-			</div>
+			</main>
 		</div>
 	);
 };

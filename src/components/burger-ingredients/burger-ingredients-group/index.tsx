@@ -1,5 +1,5 @@
 import React from 'react';
-import { IData } from '../../../app';
+import { IData } from '../../interfaces/data';
 import BurgerIngredientsGroupItem from './burger-ingredients-group-item';
 import style from './burger-ingredients-group.module.scss';
 

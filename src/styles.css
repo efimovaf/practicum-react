@@ -73,6 +73,10 @@ button:focus-visible {
 	}
 }
 
+#root {
+	width: 100%;
+}
+
 * {
 	scrollbar-width: thin;
 }

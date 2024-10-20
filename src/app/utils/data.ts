@@ -1,4 +1,4 @@
-import { IData } from '../index';
+import { IData } from '../../components/interfaces/data';
 
 export const data: IData[] = [
 	{

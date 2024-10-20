@@ -1,5 +1,5 @@
 import React from 'react';
-import { IData } from '../../app';
+import { IData } from '../interfaces/data';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import BurgerIngredientsGroup from './burger-ingredients-group';
 import style from './burger-ingredients.module.scss';

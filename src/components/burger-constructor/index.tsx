@@ -1,5 +1,5 @@
 import React from 'react';
-import { IData } from '../../app';
+import { IData } from '../interfaces/data';
 import BurgerConstructorList from './burger-constructor-list';
 import BurgerConstructorTotal from './burger-constructor-total/intex';
 import style from './burger-constructor.module.scss';

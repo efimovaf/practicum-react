@@ -1,5 +1,5 @@
 import React from 'react';
-import { IData } from '../../../../app';
+import { IData } from '../../../interfaces/data';
 import {
 	Counter,
 	CurrencyIcon,

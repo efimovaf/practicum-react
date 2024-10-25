@@ -8,10 +8,8 @@
 }
 
 .groups {
-	composes: pt-10 from global;
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
 	height: calc(-290px + 100vh);
 	overflow: hidden auto;
 }

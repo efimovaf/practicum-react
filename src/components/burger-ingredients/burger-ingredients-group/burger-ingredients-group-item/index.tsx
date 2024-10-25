@@ -8,15 +8,19 @@ import style from './burger-ingredients-group-item.module.scss';
 
 export interface IBurgerIngredientsGroupItem {
 	item: IData;
+	setCurrentIngredient(item: IData): void;
 }
 
 const BurgerIngredientsGroupItem: React.FC<IBurgerIngredientsGroupItem> = (
 	props
 ) => {
-	const { item } = props;
+	const { item, setCurrentIngredient } = props;
 
 	return (
-		<div className={style.item}>
+		<div
+			className={style.item}
+			role='presentation'
+			onClick={() => setCurrentIngredient(item)}>
 			<Counter count={1} size='default' extraClass='m-1' />
 			<img alt={item.name} src={item.image} />
 			<div className={style.price}>

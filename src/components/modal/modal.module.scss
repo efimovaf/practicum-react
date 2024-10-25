@@ -1,0 +1,24 @@
+.main {
+	composes: pl-10 pr-10 pt-10 pb-10 from global;
+	max-width: 720px;
+	background: rgba(28, 28, 33, 1);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 40px;
+	z-index: 1010;
+	min-height: 500px;
+}
+
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 64px;
+}
+
+.closeIcon {
+	cursor: pointer;
+}

@@ -1,32 +1,28 @@
-import clsx from 'clsx';
-import { useState } from 'react';
-import s from './app.module.scss';
-import reactLogo from './assets/react.svg';
-import { ReactComponent as TypescriptLogo } from './assets/typescript.svg';
+import { useData } from '../components/hooks/data';
+import AppHeader from '../components/app-header';
+import BurgerIngredients from '../components/burger-ingredients';
+import BurgerConstructor from '../components/burger-constructor';
+import style from './app.module.scss';
 
 export const App = () => {
-	// const num = 0
-	const [count, setCount] = useState(0);
+	const { isLoadingData, data, buns, sauces, mains, bunCurrent } = useData();
+
 	return (
-		<div className='page'>
-			<div className='logo-wrapper'>
-				<a href='https://reactjs.org' target='_blank' rel='noreferrer'>
-					<img
-						src={reactLogo}
-						className={clsx(s.logo, s.react)}
-						alt='React logo'
-					/>
-				</a>
-				<a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
-					<TypescriptLogo className={s.logo} />
-				</a>
-			</div>
-			<h1>React + TS</h1>
-			<div className={s.card}>
-				<button onClick={() => setCount((count) => count + 1)}>
-					count is {count}
-				</button>
-			</div>
-		</div>
+		<>
+			{!isLoadingData && data.length > 0 ? (
+				<div className={style.app}>
+					<AppHeader />
+					<main className={style.main}>
+						<BurgerIngredients buns={buns} sauces={sauces} mains={mains} />
+						{bunCurrent && (
+							<BurgerConstructor
+								bun={bunCurrent}
+								dataList={[...sauces, ...mains]}
+							/>
+						)}
+					</main>
+				</div>
+			) : null}
+		</>
 	);
 };

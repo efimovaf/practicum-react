@@ -1,0 +1,15 @@
+.main {
+	composes: pt-10 from global;
+	width: 620px;
+}
+
+.tabs {
+	display: flex;
+}
+
+.groups {
+	display: flex;
+	flex-direction: column;
+	height: calc(-290px + 100vh);
+	overflow: hidden auto;
+}

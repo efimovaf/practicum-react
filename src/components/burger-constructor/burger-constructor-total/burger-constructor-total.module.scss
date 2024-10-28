@@ -1,0 +1,19 @@
+.main {
+	composes: pr-7 from global;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	gap: 40px;
+}
+
+.totalGroup {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+}
+
+.totalIcon {
+	width: 36px;
+	height: 36px;
+}

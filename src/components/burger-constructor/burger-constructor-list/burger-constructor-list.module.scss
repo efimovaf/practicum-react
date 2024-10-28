@@ -1,0 +1,23 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	height: calc(-320px + 100vh);
+}
+
+.mainElement {
+	composes: ml-8 from global;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden auto;
+	gap: 16px;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}

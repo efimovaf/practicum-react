@@ -1,0 +1,33 @@
+.mainHeader {
+	background: rgba(28, 28, 33, 1);
+	min-height: 88px;
+}
+
+.nav {
+	min-height: inherit;
+	max-width: 1350px;
+	margin: 0 auto;
+}
+
+.ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+	min-height: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+.li {
+	flex: 1;
+}
+
+.navigationGroup {
+	display: flex;
+	gap: 8px;
+}
+
+.profile {
+	display: flex;
+	justify-content: flex-end;
+}

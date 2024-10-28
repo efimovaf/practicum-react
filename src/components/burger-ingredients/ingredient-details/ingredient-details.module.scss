@@ -1,0 +1,29 @@
+.main {
+	display: flex;
+	flex-direction: column;
+}
+
+.imageWrapper {
+	composes: pl-5 pr-5 from global;
+}
+
+.image {
+	width: 100%;
+}
+
+.parameters {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.parameter {
+	display: flex;
+	flex-direction: column;
+	min-width: 120px;
+	gap: 8px;
+}
+
+.centerHor {
+	align-self: center;
+}

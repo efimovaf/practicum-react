@@ -7,7 +7,7 @@ const BurgerConstructor: React.FC = () => {
 	return (
 		<div className={style.main}>
 			<BurgerConstructorList />
-			<BurgerConstructorTotal total={1589} />
+			<BurgerConstructorTotal />
 		</div>
 	);
 };

@@ -14,11 +14,7 @@ import {
 import { clearConstructorIngredients } from '../../../services/constructor-ingredients/action';
 import style from './burger-constructor-total.module.scss';
 
-export interface IBurgerConstructorTotal {
-	total: number;
-}
-
-const BurgerConstructorTotal: React.FC<IBurgerConstructorTotal> = () => {
+const BurgerConstructorTotal: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const { bun, ingredients, orderRequest, order } = useAppSelector((state) => ({
 		bun: getBun(state),

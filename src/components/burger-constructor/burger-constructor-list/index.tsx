@@ -1,49 +1,77 @@
-import React from 'react';
-import { IData } from '../../interfaces/data';
+import React, { useCallback } from 'react';
+import { useDrop } from 'react-dnd';
+import { useAppDispatch, useAppSelector } from '../../../hooks/store';
+import { getAllIngredients } from '../../../services/ingredients/selectors';
 import {
-	ConstructorElement,
-	DragIcon,
-} from '@ya.praktikum/react-developer-burger-ui-components';
+	addConstructorItem,
+	sortConstructorIngredients,
+} from '../../../services/constructor-ingredients/action';
+import { getConstructorIngredients } from '../../../services/constructor-ingredients/selectors';
+import ConstructorElementEmpty from './burger-constructor-element-empty';
+import BurgerConstructorListBun from './burger-constructor-list-bun';
+import ConstructorItem from './burger-constructor-element';
+import { findIngredient } from '../../../utils/filter-data';
 import style from './burger-constructor-list.module.scss';
 
-export interface IBurgerConstructorList {
-	bun: IData;
-	dataList: IData[];
-}
+const BurgerConstructorList: React.FC = () => {
+	const dispatch = useAppDispatch();
 
-const BurgerConstructorList: React.FC<IBurgerConstructorList> = (props) => {
-	const { bun, dataList } = props;
+	const { ingredients, allIngredients } = useAppSelector((state) => ({
+		ingredients: getConstructorIngredients(state),
+		allIngredients: getAllIngredients(state),
+	}));
+
+	const dispatchIngredient = (itemId: { id: string }) => {
+		const ingredient = findIngredient(allIngredients, itemId.id);
+
+		if (ingredient) dispatch(addConstructorItem(ingredient));
+	};
+
+	const [{ isOver, canDrop }, dropIngredientsTarget] = useDrop(() => ({
+		accept: 'ingredients',
+		drop: (itemId: { id: string }) => dispatchIngredient(itemId),
+		collect: (monitor) => ({
+			isOver: monitor.isOver(),
+			canDrop: monitor.canDrop(),
+		}),
+	}));
+
+	const moveCard = useCallback(
+		(dragIndex: number, hoverIndex: number) => {
+			const newIngredients = [...ingredients];
+			newIngredients.splice(
+				dragIndex,
+				0,
+				newIngredients.splice(hoverIndex, 1)[0]
+			);
+
+			dispatch(sortConstructorIngredients(newIngredients));
+		},
+		[dispatch, ingredients]
+	);
+
+	const isActive = isOver && canDrop;
 
 	return (
 		<div className={style.main}>
-			<ConstructorElement
-				isLocked
-				type='top'
-				extraClass={style.mainElement}
-				text={`${bun.name} (верх)`}
-				price={bun.price}
-				thumbnail={bun.image}
-			/>
-			<div className={style.list}>
-				{dataList.map((it) => (
-					<div key={it._id} className={style.item}>
-						<DragIcon type='primary' />
-						<ConstructorElement
-							text={it.name}
-							price={it.price}
-							thumbnail={it.image}
-						/>
+			<BurgerConstructorListBun type={'top'} />
+			<div ref={dropIngredientsTarget} className={style.listRef}>
+				{ingredients && ingredients.length > 0 ? (
+					<div className={style.list}>
+						{ingredients.map((it) => (
+							<ConstructorItem key={it._key} item={it} moveCard={moveCard} />
+						))}
 					</div>
-				))}
+				) : (
+					<ConstructorElementEmpty
+						text={'Выберите начинку'}
+						extraClass={`${style.mainElement} ${
+							isActive ? style.active : canDrop ? style.canDrop : ''
+						}`}
+					/>
+				)}
 			</div>
-			<ConstructorElement
-				isLocked
-				type='bottom'
-				extraClass={style.mainElement}
-				text={`${bun.name} (низ)`}
-				price={bun.price}
-				thumbnail={bun.image}
-			/>
+			<BurgerConstructorListBun type={'bottom'} />
 		</div>
 	);
 };

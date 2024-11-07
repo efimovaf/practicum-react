@@ -1,10 +1,10 @@
 import React from 'react';
-import { IData } from '../../interfaces/data';
+import { IIngredient } from '../../../interfaces/ingredient';
 import { Gap } from '../../ui/gap';
 import style from './ingredient-details.module.scss';
 
 export interface IIngredientDetails {
-	item: IData;
+	item: IIngredient;
 }
 
 const parametersMap = [
@@ -26,9 +26,7 @@ const parametersMap = [
 	},
 ];
 
-const IngredientDetails: React.FC<IIngredientDetails> = ({
-	item,
-}) => {
+const IngredientDetails: React.FC<IIngredientDetails> = ({ item }) => {
 	return (
 		<div className={style.main}>
 			<div className={style.imageWrapper}>
@@ -48,7 +46,7 @@ const IngredientDetails: React.FC<IIngredientDetails> = ({
 						</p>
 						<p
 							className={`text text_type_digits-default text_color_inactive ${style.centerHor}`}>
-							{item[it.code as keyof IData]}
+							{item[it.code as keyof IIngredient]}
 						</p>
 					</div>
 				))}

@@ -1,19 +1,51 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import {
 	Button,
 	CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../../modal';
 import OrderDetails from './order-details';
+import { useAppDispatch, useAppSelector } from '../../../hooks/store';
+import { clearOrder, getOrder } from '../../../services/order/action';
+import {
+	getBun,
+	getConstructorIngredients,
+} from '../../../services/constructor-ingredients/selectors';
+import { clearConstructorIngredients } from '../../../services/constructor-ingredients/action';
 import style from './burger-constructor-total.module.scss';
 
 export interface IBurgerConstructorTotal {
 	total: number;
 }
 
-const BurgerConstructorTotal: React.FC<IBurgerConstructorTotal> = (props) => {
-	const { total } = props;
-	const [openTotalDetails, setOpenTotalDetails] = useState<boolean>(false);
+const BurgerConstructorTotal: React.FC<IBurgerConstructorTotal> = () => {
+	const dispatch = useAppDispatch();
+	const { bun, ingredients, orderRequest, order } = useAppSelector((state) => ({
+		bun: getBun(state),
+		ingredients: getConstructorIngredients(state),
+		orderRequest: state.order.orderRequest,
+		order: state.order.order,
+	}));
+
+	const total = useMemo(() => {
+		const ingredientsTotal = ingredients.reduce((sum, it) => {
+			return sum + it.price;
+		}, 0);
+
+		return ingredientsTotal + (bun ? bun.price * 2 : 0);
+	}, [bun, ingredients]);
+
+	const onClickOrder = () => {
+		if (bun && ingredients) {
+			const ingredientsIds = ingredients.map((it) => it._id);
+			dispatch(getOrder([bun._id, ...ingredientsIds, bun._id]));
+		}
+	};
+
+	const onClose = () => {
+		dispatch(clearOrder());
+		dispatch(clearConstructorIngredients());
+	};
 
 	return (
 		<div className={style.main}>
@@ -25,12 +57,12 @@ const BurgerConstructorTotal: React.FC<IBurgerConstructorTotal> = (props) => {
 				htmlType='button'
 				type='primary'
 				size='large'
-				onClick={() => setOpenTotalDetails(true)}>
+				onClick={onClickOrder}>
 				Оформить заказ
 			</Button>
 
-			{openTotalDetails && (
-				<Modal onClose={() => setOpenTotalDetails(false)}>
+			{!orderRequest && order && (
+				<Modal onClose={onClose}>
 					<OrderDetails />
 				</Modal>
 			)}

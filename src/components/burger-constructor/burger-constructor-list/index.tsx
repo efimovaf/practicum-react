@@ -16,10 +16,8 @@ import style from './burger-constructor-list.module.scss';
 const BurgerConstructorList: React.FC = () => {
 	const dispatch = useAppDispatch();
 
-	const { ingredients, allIngredients } = useAppSelector((state) => ({
-		ingredients: getConstructorIngredients(state),
-		allIngredients: getAllIngredients(state),
-	}));
+	const ingredients = useAppSelector(getConstructorIngredients);
+	const allIngredients = useAppSelector(getAllIngredients);
 
 	const dispatchIngredient = (itemId: { id: string }) => {
 		const ingredient = findIngredient(allIngredients, itemId.id);

@@ -23,11 +23,8 @@ const BurgerIngredientsGroup = React.forwardRef<
 	const { id, title, dataCode, ...rest } = props;
 
 	const data = useAppSelector(getIngredientsByType(dataCode));
-
-	const { bun, ingredients } = useAppSelector((state) => ({
-		bun: getBun(state),
-		ingredients: getConstructorIngredients(state),
-	}));
+	const bun = useAppSelector(getBun);
+	const ingredients = useAppSelector(getConstructorIngredients);
 
 	const objectCount = useMemo(() => {
 		const ids: string[] =

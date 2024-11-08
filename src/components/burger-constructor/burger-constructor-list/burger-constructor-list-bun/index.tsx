@@ -17,10 +17,8 @@ const BurgerConstructorListBun: React.FC<IBurgerConstructorListBun> = ({
 }) => {
 	const dispatch = useAppDispatch();
 
-	const { bun, allIngredients } = useAppSelector((state) => ({
-		bun: getBun(state),
-		allIngredients: getAllIngredients(state),
-	}));
+	const bun = useAppSelector(getBun);
+	const allIngredients = useAppSelector(getAllIngredients);
 
 	const dispatchIngredient = (itemId: { id: string }) => {
 		const ingredient = findIngredient(allIngredients, itemId.id);

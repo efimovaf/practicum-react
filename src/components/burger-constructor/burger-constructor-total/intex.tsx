@@ -12,16 +12,14 @@ import {
 	getConstructorIngredients,
 } from '../../../services/constructor-ingredients/selectors';
 import { clearConstructorIngredients } from '../../../services/constructor-ingredients/action';
+import { getDataOrder } from '../../../services/order/selectors';
 import style from './burger-constructor-total.module.scss';
 
 const BurgerConstructorTotal: React.FC = () => {
 	const dispatch = useAppDispatch();
-	const { bun, ingredients, orderRequest, order } = useAppSelector((state) => ({
-		bun: getBun(state),
-		ingredients: getConstructorIngredients(state),
-		orderRequest: state.order.orderRequest,
-		order: state.order.order,
-	}));
+	const { orderRequest, order } = useAppSelector(getDataOrder);
+	const bun = useAppSelector(getBun);
+	const ingredients = useAppSelector(getConstructorIngredients);
 
 	const total = useMemo(() => {
 		const ingredientsTotal = ingredients.reduce((sum, it) => {

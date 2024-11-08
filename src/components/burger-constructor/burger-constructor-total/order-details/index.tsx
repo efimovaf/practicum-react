@@ -2,12 +2,11 @@ import React from 'react';
 import { useAppSelector } from '../../../../hooks/store';
 import { Gap } from '../../../ui/gap';
 import doneImg from '../../../../images/done.png';
+import { getDataOrder } from '../../../../services/order/selectors';
 import style from './order-details.module.scss';
 
 const OrderDetails: React.FC = () => {
-	const { order } = useAppSelector((state) => ({
-		order: state.order.order,
-	}));
+	const { order } = useAppSelector(getDataOrder);
 
 	return (
 		<div className={style.main}>

@@ -3,7 +3,10 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useAppDispatch, useAppSelector } from '../hooks/store';
 import { getIngredients } from '../services/ingredients/action';
-import { getAllIngredients } from '../services/ingredients/selectors';
+import {
+	getAllIngredients,
+	getDataRequestIngredients,
+} from '../services/ingredients/selectors';
 import AppHeader from '../components/app-header';
 import BurgerIngredients from '../components/burger-ingredients';
 import BurgerConstructor from '../components/burger-constructor';
@@ -12,10 +15,8 @@ import style from './app.module.scss';
 export const App = () => {
 	const dispatch = useAppDispatch();
 
-	const { dataRequest, data } = useAppSelector((state) => ({
-		dataRequest: state.ingredients.dataRequest,
-		data: getAllIngredients(state),
-	}));
+	const dataRequest = useAppSelector(getDataRequestIngredients);
+	const data = useAppSelector(getAllIngredients);
 
 	useEffect(() => {
 		dispatch(getIngredients());
@@ -23,7 +24,7 @@ export const App = () => {
 
 	return (
 		<>
-			{!dataRequest && data && data.length > 0 ? (
+			{!dataRequest && data.length > 0 ? (
 				<div className={style.app}>
 					<AppHeader />
 					<main className={style.main}>

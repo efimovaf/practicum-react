@@ -8,3 +8,6 @@ export const getIngredientsByType = (filter: string) =>
 	createSelector([getAllIngredients], (data) => {
 		return data && data.length > 0 ? filterDataByType(data, filter) : [];
 	});
+
+export const getDataRequestIngredients = (state: RootState) =>
+	state.ingredients.dataRequest;

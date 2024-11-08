@@ -5,7 +5,7 @@ import {
 	ORDER_SUCCESS,
 } from './action';
 
-interface IOrder {
+export interface IOrder {
 	number: number;
 }
 

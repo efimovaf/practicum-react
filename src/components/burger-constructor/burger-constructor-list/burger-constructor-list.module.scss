@@ -7,12 +7,16 @@
 
 .mainElement {
 	composes: ml-8 from global;
+	max-height: 80px;
+}
+
+.listRef {
+	overflow: hidden auto;
 }
 
 .list {
 	display: flex;
 	flex-direction: column;
-	overflow: hidden auto;
 	gap: 16px;
 }
 
@@ -20,4 +24,13 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	cursor: pointer;
+}
+
+.canDrop {
+	border: 3px dotted #4c4cff;
+}
+
+.active {
+	background: rgba(76, 106, 255, 0.6) ;
 }

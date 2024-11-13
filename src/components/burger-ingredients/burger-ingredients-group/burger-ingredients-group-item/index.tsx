@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
-import { useAppDispatch } from '../../../../hooks/store';
-import { addIngredient } from '../../../../services/current-ingredient/action';
+import { Link, useLocation } from 'react-router-dom';
 import { IIngredient } from '../../../../interfaces/ingredient';
 import {
 	Counter,
@@ -17,6 +16,7 @@ export interface IBurgerIngredientsGroupItem {
 const BurgerIngredientsGroupItem: React.FC<IBurgerIngredientsGroupItem> = (
 	props
 ) => {
+	const location = useLocation();
 	const { item, count } = props;
 	const { _id: id } = item;
 
@@ -28,27 +28,25 @@ const BurgerIngredientsGroupItem: React.FC<IBurgerIngredientsGroupItem> = (
 		}),
 	});
 
-	const dispatch = useAppDispatch();
-
-	const onClickItem = () => {
-		dispatch(addIngredient(item));
-	};
-
 	return (
-		<div
-			ref={dragRef}
-			className={style.item}
-			role='presentation'
-			style={{ opacity }}
-			onClick={onClickItem}>
-			{count && <Counter count={count} size='default' extraClass='m-1' />}
-			<img alt={item.name} src={item.image} />
-			<div className={style.price}>
-				<p className='text text_type_digits-default'>{item.price}</p>
-				<CurrencyIcon type='primary' />
+		<Link
+			key={id}
+			to={`/ingredients/${id}`}
+			state={{ backgroundLocation: location }}>
+			<div
+				ref={dragRef}
+				className={style.item}
+				role='presentation'
+				style={{ opacity }}>
+				{count && <Counter count={count} size='default' extraClass='m-1' />}
+				<img alt={item.name} src={item.image} />
+				<div className={style.price}>
+					<p className='text text_type_digits-default'>{item.price}</p>
+					<CurrencyIcon type='primary' />
+				</div>
+				<p className={style.name}>{item.name}</p>
 			</div>
-			<p className={style.name}>{item.name}</p>
-		</div>
+		</Link>
 	);
 };
 

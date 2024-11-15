@@ -41,7 +41,7 @@ const BurgerIngredientsGroupItem: React.FC<IBurgerIngredientsGroupItem> = (
 				{count && <Counter count={count} size='default' extraClass='m-1' />}
 				<img alt={item.name} src={item.image} />
 				<div className={style.price}>
-					<p className='text text_type_digits-default'>{item.price}</p>
+					<p className={style.priceText}>{item.price}</p>
 					<CurrencyIcon type='primary' />
 				</div>
 				<p className={style.name}>{item.name}</p>

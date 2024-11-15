@@ -7,7 +7,16 @@ import {
 	getDataRequestIngredients,
 } from '../services/ingredients/selectors';
 import AppHeader from '../components/app-header';
-import { HomePage, IngredientModalPage, IngredientPage } from '../pages';
+import {
+	HomePage,
+	IngredientModalPage,
+	IngredientPage,
+	LoginPage,
+	RegisterPage,
+	ForgotPasswordPage,
+	ResetPasswordPage,
+	ProfilePage,
+} from '../pages';
 import style from './app.module.scss';
 
 export const App = () => {
@@ -30,6 +39,11 @@ export const App = () => {
 					<AppHeader />
 					<Routes location={state?.backgroundLocation || location}>
 						<Route path='/' element={<HomePage />} />
+						<Route path='/login' element={<LoginPage />} />
+						<Route path='/register' element={<RegisterPage />} />
+						<Route path='/forgot-password' element={<ForgotPasswordPage />} />
+						<Route path='/reset-password' element={<ResetPasswordPage />} />
+						<Route path='/profile' element={<ProfilePage />} />
 						<Route path='/ingredients/:id' element={<IngredientPage />} />
 					</Routes>
 

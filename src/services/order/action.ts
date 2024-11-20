@@ -1,6 +1,6 @@
 import { AppDispatch, AppThunk } from '../../store/store';
-import { IOrder } from './reducer';
 import { getOrderApi } from '../api-service';
+import { IOrder } from '../../interfaces/order';
 
 export const ORDER_LOADING = 'ORDER_LOADING';
 export const ORDER_SUCCESS = 'ORDER_SUCCESS';
@@ -26,9 +26,9 @@ export const getOrder = (param: string[]): AppThunk => {
 			.then((result) => {
 				if (result.success) {
 					dispatch(addSuccess(result.order));
-				} else {
-					dispatch(addFailed('Result data was not success'));
 				}
+
+				return Promise.reject(result);
 			})
 			.catch((error) => {
 				dispatch(

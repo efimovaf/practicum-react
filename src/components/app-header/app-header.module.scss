@@ -31,3 +31,8 @@
 	display: flex;
 	justify-content: flex-end;
 }
+
+.link {
+	color: inherit !important;
+	transition: opacity 0.3s ease;
+}

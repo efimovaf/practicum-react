@@ -4,12 +4,23 @@ import {
 	Button,
 	EmailInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CenterPageWrapper from '../../components/ui/center-page-wrapper';
+import { forgotPasswordApi } from '../../services/api-service';
 import style from '../common-page.module.scss';
 
 const ForgotPasswordPage: React.FC = () => {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState('');
+
+	const onClickForgot = () => {
+		forgotPasswordApi(email).then((result) => {
+			if (result.success) {
+				localStorage.setItem('resetPassword', 'true');
+				navigate('/reset-password');
+			}
+		});
+	};
 
 	return (
 		<CenterPageWrapper>
@@ -26,7 +37,11 @@ const ForgotPasswordPage: React.FC = () => {
 						isIcon={false}
 					/>
 
-					<Button htmlType='button' type='primary' size='medium'>
+					<Button
+						htmlType='button'
+						type='primary'
+						size='medium'
+						onClick={onClickForgot}>
 						Восстановить
 					</Button>
 				</div>
@@ -34,7 +49,7 @@ const ForgotPasswordPage: React.FC = () => {
 				<div className={style.additionalActions}>
 					<div className={style.additionalAction}>
 						<p className='text text_type_main-default'>Вспомнили пароль?</p>
-						<Link to={'/'}>Войти</Link>
+						<Link to={'/login'}>Войти</Link>
 					</div>
 				</div>
 			</div>

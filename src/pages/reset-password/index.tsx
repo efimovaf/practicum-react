@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CenterPageWrapper from '../../components/ui/center-page-wrapper';
 import { Gap } from '../../components/ui/gap';
 import {
@@ -6,12 +6,29 @@ import {
 	Input,
 	PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { passwordResetApi } from '../../services/api-service';
 import style from '../common-page.module.scss';
 
 const ResetPasswordPage: React.FC = () => {
+	const navigate = useNavigate();
 	const [password, setPassword] = useState('');
 	const [code, setCode] = useState('');
+
+	useEffect(() => {
+		if (!localStorage.getItem('resetPassword')) {
+			navigate('/forgot-password');
+		}
+	}, [navigate]);
+
+	const onClickReset = () => {
+		passwordResetApi(password, code).then((result) => {
+			if (result.success) {
+				localStorage.removeItem('resetPassword');
+				navigate('/login');
+			}
+		});
+	};
 
 	return (
 		<CenterPageWrapper>
@@ -37,7 +54,11 @@ const ResetPasswordPage: React.FC = () => {
 						extraClass='ml-1'
 					/>
 
-					<Button htmlType='button' type='primary' size='medium'>
+					<Button
+						htmlType='button'
+						type='primary'
+						size='medium'
+						onClick={onClickReset}>
 						Сохранить
 					</Button>
 				</div>
@@ -45,7 +66,7 @@ const ResetPasswordPage: React.FC = () => {
 				<div className={style.additionalActions}>
 					<div className={style.additionalAction}>
 						<p className='text text_type_main-default'>Вспомнили пароль?</p>
-						<Link to={'/'}>Войти</Link>
+						<Link to={'/login'}>Войти</Link>
 					</div>
 				</div>
 			</div>

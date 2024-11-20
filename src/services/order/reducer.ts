@@ -4,10 +4,7 @@ import {
 	ORDER_LOADING,
 	ORDER_SUCCESS,
 } from './action';
-
-export interface IOrder {
-	number: number;
-}
+import { IOrder } from '../../interfaces/order';
 
 export interface IOrderState {
 	order: IOrder | undefined;

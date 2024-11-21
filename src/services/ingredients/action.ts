@@ -25,9 +25,9 @@ export const getIngredients = (): AppThunk => {
 			.then((result) => {
 				if (result.success) {
 					dispatch(addSuccess(result.data as IIngredient[]));
-				} else {
-					dispatch(addFailed('Result data was not success'));
 				}
+
+				return Promise.reject(result);
 			})
 			.catch((error) => {
 				dispatch(

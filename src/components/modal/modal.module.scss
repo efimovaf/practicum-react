@@ -1,5 +1,6 @@
 .main {
 	composes: pl-10 pr-10 pt-10 pb-10 from global;
+	min-width: 500px;
 	max-width: 720px;
 	background: rgba(28, 28, 33, 1);
 	position: absolute;
@@ -8,7 +9,7 @@
 	transform: translate(-50%, -50%);
 	border-radius: 40px;
 	z-index: 1010;
-	min-height: 500px;
+	min-height: 100px;
 }
 
 .header {

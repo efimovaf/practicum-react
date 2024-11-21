@@ -1,0 +1,19 @@
+.wrapper {
+  	width: 100vw;
+}
+
+.container {
+  	display: flex;
+  	flex-direction: column;
+}
+
+.content {
+	@extend .container;
+  	margin: auto;
+	gap: 20px;
+	align-items: center;
+}
+
+.img {
+	width: 1000px;
+}

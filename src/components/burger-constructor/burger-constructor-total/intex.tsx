@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
 	Button,
 	CurrencyIcon,
@@ -13,10 +14,14 @@ import {
 } from '../../../services/constructor-ingredients/selectors';
 import { clearConstructorIngredients } from '../../../services/constructor-ingredients/action';
 import { getDataOrder } from '../../../services/order/selectors';
+import { getUser } from '../../../services/user/selectors';
+import Loader from '../../loader';
 import style from './burger-constructor-total.module.scss';
 
 const BurgerConstructorTotal: React.FC = () => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const user = useAppSelector(getUser);
 	const { orderRequest, order } = useAppSelector(getDataOrder);
 	const bun = useAppSelector(getBun);
 	const ingredients = useAppSelector(getConstructorIngredients);
@@ -30,7 +35,9 @@ const BurgerConstructorTotal: React.FC = () => {
 	}, [bun, ingredients]);
 
 	const onClickOrder = () => {
-		if (bun && ingredients) {
+		if (!user) {
+			navigate('/login');
+		} else if (bun && ingredients) {
 			const ingredientsIds = ingredients.map((it) => it._id);
 			dispatch(getOrder([bun._id, ...ingredientsIds, bun._id]));
 		}
@@ -54,6 +61,12 @@ const BurgerConstructorTotal: React.FC = () => {
 				onClick={onClickOrder}>
 				Оформить заказ
 			</Button>
+
+			{orderRequest && (
+				<Modal title={'Оформляем заказ...'} onClose={onClose}>
+					<Loader />
+				</Modal>
+			)}
 
 			{!orderRequest && order && (
 				<Modal onClose={onClose}>

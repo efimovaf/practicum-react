@@ -1,11 +1,6 @@
 import React, { useRef } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/store';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import BurgerIngredientsGroup from './burger-ingredients-group';
-import IngredientDetails from './ingredient-details';
-import Modal from '../modal';
-import { getCurrentIngredient } from '../../services/current-ingredient/selectors';
-import { deleteIngredient } from '../../services/current-ingredient/action';
 import style from './burger-ingredients.module.scss';
 
 const valueTabs = [
@@ -34,13 +29,6 @@ const BurgerIngredients: React.FC = () => {
 	const mainsRef = useRef<HTMLParagraphElement>(null);
 
 	const [currentTab, setCurrentTab] = React.useState<string>('tab_0');
-
-	const dispatch = useAppDispatch();
-	const currentIngredient = useAppSelector(getCurrentIngredient);
-
-	const onCloseModal = () => {
-		dispatch(deleteIngredient());
-	};
 
 	const handleClickTab = (value: string) => {
 		setCurrentTab(value);
@@ -117,12 +105,6 @@ const BurgerIngredients: React.FC = () => {
 					/>
 				))}
 			</div>
-
-			{currentIngredient && (
-				<Modal title={'Детали ингредиента'} onClose={onCloseModal}>
-					<IngredientDetails item={currentIngredient} />
-				</Modal>
-			)}
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CenterPageWrapper from '../../components/ui/center-page-wrapper';
 import { Gap } from '../../components/ui/gap';
 import {
@@ -10,17 +10,23 @@ import {
 import { Link } from 'react-router-dom';
 import { register } from '../../services/user/action';
 import { useAppDispatch } from '../../hooks/store';
+import { IRegisterUserRequest } from '../../interfaces/api';
+import { useForm } from '../../hooks/form';
 import style from '../common-page.module.scss';
+
+const initState = {
+	name: '',
+	email: '',
+	password: '',
+};
 
 const RegisterPage: React.FC = () => {
 	const dispatch = useAppDispatch();
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const { values, handleChange } = useForm<IRegisterUserRequest>(initState);
 
 	const onClickRegister = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		dispatch(register({ email, password, name }));
+		dispatch(register(values));
 	};
 
 	return (
@@ -33,22 +39,22 @@ const RegisterPage: React.FC = () => {
 
 						<Input
 							type={'text'}
-							onChange={(e) => setName(e.target.value)}
-							value={name}
+							onChange={handleChange}
+							value={values.name}
 							name={'name'}
 							size={'default'}
 							placeholder={'Имя'}
 							extraClass='ml-1'
 						/>
 						<EmailInput
-							onChange={(e) => setEmail(e.target.value)}
-							value={email}
+							onChange={handleChange}
+							value={values.email}
 							name={'email'}
 							isIcon={false}
 						/>
 						<PasswordInput
-							onChange={(e) => setPassword(e.target.value)}
-							value={password}
+							onChange={handleChange}
+							value={values.password}
 							name={'password'}
 							extraClass='mb-2'
 						/>

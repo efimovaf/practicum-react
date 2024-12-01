@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CenterPageWrapper from '../../components/ui/center-page-wrapper';
 import {
 	Button,
@@ -9,16 +9,22 @@ import { Link } from 'react-router-dom';
 import { Gap } from '../../components/ui/gap';
 import { useAppDispatch } from '../../hooks/store';
 import { login } from '../../services/user/action';
+import { useForm } from '../../hooks/form';
+import { ILoginRequest } from '../../interfaces/api';
 import style from '../common-page.module.scss';
+
+const initState = {
+	email: '',
+	password: '',
+};
 
 const LoginPage: React.FC = () => {
 	const dispatch = useAppDispatch();
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const { values, handleChange } = useForm<ILoginRequest>(initState);
 
 	const onClickLogin = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		dispatch(login({ email, password }));
+		dispatch(login(values));
 	};
 
 	return (
@@ -30,14 +36,14 @@ const LoginPage: React.FC = () => {
 						<p className='text text_type_main-medium'>Вход</p>
 
 						<EmailInput
-							onChange={(e) => setEmail(e.target.value)}
-							value={email}
+							onChange={handleChange}
+							value={values.email}
 							name={'email'}
 							isIcon={false}
 						/>
 						<PasswordInput
-							onChange={(e) => setPassword(e.target.value)}
-							value={password}
+							onChange={handleChange}
+							value={values.password}
 							name={'password'}
 							extraClass='mb-2'
 						/>

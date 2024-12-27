@@ -3,8 +3,14 @@ import { thunk, ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { rootReducer } from '../services/reducers/root-reducer';
 import { socketMiddleware } from '../services/middleware';
-import { TWsExternalFeedActions, wsFeedActions } from '../services/orders/action';
-import { TWsExternalProfileActions, wsProfileActions } from '../services/profile-orders/action';
+import {
+	TWsExternalFeedActions,
+	wsFeedActions,
+} from '../services/orders/action';
+import {
+	TWsExternalProfileActions,
+	wsProfileActions,
+} from '../services/profile-orders/action';
 import { IDataIOrders } from '../interfaces/feed';
 import { TWsInternalFeedActions } from '../services/orders/slice';
 import { TWsInternalProfileActions } from '../services/profile-orders/slice';

@@ -12,5 +12,5 @@ export const rootReducer = combineReducers({
 	order: orderReducer,
 	user: userReducer,
 	[feedSlice.reducerPath]: feedSlice.reducer,
-	[profileSlice.reducerPath]: profileSlice.reducer
+	[profileSlice.reducerPath]: profileSlice.reducer,
 });

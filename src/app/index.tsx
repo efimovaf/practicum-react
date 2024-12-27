@@ -88,7 +88,10 @@ export const App = () => {
 								element={<IngredientModalPage />}
 							/>
 							<Route path='/feed/:number' element={<FeedInfoModalPage />} />
-							<Route path='/profile/orders/:number' element={<FeedInfoModalPage />} />
+							<Route
+								path='/profile/orders/:number'
+								element={<FeedInfoModalPage />}
+							/>
 						</Routes>
 					)}
 				</div>

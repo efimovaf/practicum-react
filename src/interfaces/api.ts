@@ -18,6 +18,10 @@ export type IOrderResponse = {
 	order: IOrder;
 };
 
+export type IOrderByNumberResponse = {
+	orders: IOrder[];
+};
+
 export type IRefreshTokenResponse = {
 	accessToken: string;
 	refreshToken: string;

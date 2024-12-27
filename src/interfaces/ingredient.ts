@@ -18,3 +18,7 @@ export interface IIngredientWithKey extends IIngredient {
 	_key: string;
 	index: number;
 }
+
+export interface IIngredientWithCount extends IIngredient {
+	_count: number;
+}

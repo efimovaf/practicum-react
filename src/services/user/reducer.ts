@@ -16,7 +16,7 @@ interface ISetUserAction {
 	payload: IUser;
 }
 
-type IUserAction = ISetAuthCheckedAction | ISetUserAction;
+export type IUserAction = ISetAuthCheckedAction | ISetUserAction;
 
 const initialState: IUserState = {
 	user: undefined,

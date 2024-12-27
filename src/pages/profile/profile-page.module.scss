@@ -1,4 +1,5 @@
 .edit {
+	composes: pt-30 from global;
 	display: flex;
 	flex-direction: column;
 	gap: 24px;

@@ -37,7 +37,7 @@ interface ISortCurrentIngredientAction {
 	payload: IIngredientWithKey[];
 }
 
-type IConstructorIngredientsAction =
+export type IConstructorIngredientsAction =
 	| IAddBunCurrentIngredientAction
 	| IAddItemCurrentIngredientAction
 	| IDeleteItemCurrentIngredientAction

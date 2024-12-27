@@ -1,0 +1,76 @@
+.flexRow {
+	display: flex;
+	flex-direction: row;
+}
+
+.flexColumn {
+	display: flex;
+	flex-direction: column;
+}
+
+.card {
+	@extend .flexColumn;
+	min-width: 640px;
+}
+
+.orderId {
+	composes: text text_type_digits-default from global;
+	text-align: center;
+}
+
+.info {
+	@extend .flexColumn;
+	gap: 12px;
+	width: 640px;
+}
+
+.status {
+	composes: text text_type_main-default from global;
+}
+
+.ingredients {
+	@extend .flexColumn;
+	gap: 24px;
+}
+
+.ingredientsList {
+	@extend .flexColumn;
+	gap: 16px;
+	overflow: hidden auto;
+	max-height: 340px;
+	padding-right: 24px;
+}
+
+.ingredient {
+	@extend .flexRow;
+	min-height: 70px;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+}
+
+.ingredientLeft {
+	@extend .flexRow;
+	align-items: center;
+	gap: 16px;
+}
+
+.price {
+	@extend .flexRow;
+	gap: 8px;
+}
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.total {
+	display: flex;
+	gap: 8px;
+}
+
+.totalIcon {
+	width: 24px;
+	height: 24px;
+}

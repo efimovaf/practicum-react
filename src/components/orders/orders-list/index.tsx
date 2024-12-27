@@ -17,9 +17,9 @@ const OrdersList: React.FC<IOrdersList> = ({ orders, styleList }) => {
 			{orders.map((it) => (
 				<Link
 					key={it.number}
+					className={style.link}
 					to={`${location.pathname}/${it.number}`}
-					state={{ backgroundLocation: location }}
-					style={{ color: 'unset' }}>
+					state={{ backgroundLocation: location }}>
 					<OrdersElement order={it} />
 				</Link>
 			))}

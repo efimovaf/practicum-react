@@ -2,6 +2,7 @@ import React from 'react';
 import OrdersElementImage from '../orders-element-image';
 import { useAppSelector } from '../../../../hooks/store';
 import { getAllIngredientsMap } from '../../../../services/ingredients/selectors';
+import { v4 as uuidv4 } from 'uuid';
 import style from './orders-element-ingredients.module.scss';
 
 interface IOrdersElementIngredients {
@@ -30,7 +31,7 @@ const OrdersElementIngredients: React.FC<IOrdersElementIngredients> = ({
 
 				return (
 					<OrdersElementImage
-						key={element._id}
+						key={uuidv4()}
 						element={element}
 						styleCircle={getStyle(index)}
 					/>

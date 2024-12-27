@@ -12,6 +12,7 @@ import { getStatusColor, getStatusText } from '../../../utils/order';
 import { getAllIngredientsMap } from '../../../services/ingredients/selectors';
 import { IIngredientWithCount } from '../../../interfaces/ingredient';
 import { getOrderByNumber } from '../../../services/order/action';
+import { v4 as uuidv4 } from 'uuid';
 import style from './order-card.module.scss';
 
 const OrderCard: React.FC = () => {
@@ -81,14 +82,10 @@ const OrderCard: React.FC = () => {
 						<p className='text text_type_main-medium'>Состав:</p>
 						<div className={style.ingredientsList}>
 							{ingredientsRes.map((it) => (
-								<div key={it._id} className={style.ingredient}>
+								<div key={uuidv4()} className={style.ingredient}>
 									<div className={style.ingredientLeft}>
 										<OrdersElementImage element={it} />
-										<p
-											className='text text_type_main-default'
-											style={{ width: '320px' }}>
-											{it.name}
-										</p>
+										<p className={style.ingredientName}>{it.name}</p>
 									</div>
 									<div className={style.price}>
 										<p className='text text_type_digits-default'>{`${it._count} x ${it.price}`}</p>

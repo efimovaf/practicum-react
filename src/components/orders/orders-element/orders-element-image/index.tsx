@@ -6,17 +6,15 @@ interface IOrdersElementImage {
 	element?: IIngredient;
 	count?: number;
 	styleCircle?: React.CSSProperties;
-	key?: string;
 }
 
 const OrdersElementImage: React.FC<IOrdersElementImage> = ({
 	element,
 	count,
 	styleCircle,
-	key,
 }) => {
 	return (
-		<div key={key} className={style.elementImage} style={styleCircle}>
+		<div className={style.elementImage} style={styleCircle}>
 			{count ? (
 				`+${count}`
 			) : (

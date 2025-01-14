@@ -1,6 +1,7 @@
 import {
 	ORDER_CLEAR,
 	ORDER_FAILED,
+	ORDER_GET_BY_NUMBER,
 	ORDER_LOADING,
 	ORDER_SUCCESS,
 } from './action';
@@ -11,6 +12,7 @@ export interface IOrderState {
 	orderRequest: boolean;
 	orderFailed: boolean;
 	error: string | undefined;
+	orderByNumber: IOrder | undefined;
 }
 
 interface ILoadingOrderAction {
@@ -31,17 +33,24 @@ interface IClearOrderAction {
 	type: typeof ORDER_CLEAR;
 }
 
-type IOrderAction =
+interface IOrderByNumberAction {
+	type: typeof ORDER_GET_BY_NUMBER;
+	payload: IOrder;
+}
+
+export type IOrderAction =
 	| ILoadingOrderAction
 	| ISuccessOrderAction
 	| IFailedOrderAction
-	| IClearOrderAction;
+	| IClearOrderAction
+	| IOrderByNumberAction;
 
 const initialState: IOrderState = {
 	order: undefined,
 	orderRequest: false,
 	orderFailed: false,
 	error: undefined,
+	orderByNumber: undefined,
 };
 
 export const orderReducer = (state = initialState, action: IOrderAction) => {
@@ -75,6 +84,13 @@ export const orderReducer = (state = initialState, action: IOrderAction) => {
 				orderRequest: false,
 				error: undefined,
 				order: undefined,
+			};
+		}
+		case ORDER_GET_BY_NUMBER: {
+			return {
+				...state,
+				orderByNumber: action.payload,
+				orderRequest: false,
 			};
 		}
 		default: {

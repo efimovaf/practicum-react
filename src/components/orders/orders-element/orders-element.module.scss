@@ -1,0 +1,42 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	min-width: 600px;
+	padding: 24px;
+	gap: 24px;
+	border-radius: 40px;
+	background: #1C1C21;
+	color: unset;
+}
+
+.orderId {
+	display: flex;
+	justify-content: space-between;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.status {
+	composes: text text_type_main-default from global;
+	color: #00CCCC;
+}
+
+.components {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.total {
+	display: flex;
+	gap: 8px;
+}
+
+.totalIcon {
+	width: 24px;
+	height: 24px;
+}

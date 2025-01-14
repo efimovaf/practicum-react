@@ -15,8 +15,6 @@ const UserPage: React.FC = () => {
 
 	return (
 		<>
-			<Gap size={30} />
-
 			<div className={style.main}>
 				<nav className={style.nav}>
 					<ul className={style.ul}>

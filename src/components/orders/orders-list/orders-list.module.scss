@@ -1,0 +1,11 @@
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	overflow: hidden auto;
+	height: calc(-220px + 105vh);
+}
+
+.link {
+	color: unset !important;
+}

@@ -20,6 +20,9 @@ import {
 	NotFound,
 	UserPage,
 	ProfileOrdersPage,
+	FeedPage,
+	FeedInfoPage,
+	FeedInfoModalPage,
 } from '../pages';
 import { OnlyAuth, OnlyUnAuth } from '../components/protected-route';
 import Loader from '../components/loader';
@@ -69,6 +72,12 @@ export const App = () => {
 							<Route path='orders' element={<ProfileOrdersPage />} />
 						</Route>
 						<Route path='/ingredients/:id' element={<IngredientPage />} />
+						<Route path='/feed' element={<FeedPage />} />
+						<Route path='/feed/:number' element={<FeedInfoPage />} />
+						<Route
+							path='/profile/orders/:number'
+							element={<OnlyAuth component={<FeedInfoPage />} />}
+						/>
 						<Route path='*' element={<NotFound />} />
 					</Routes>
 
@@ -77,6 +86,11 @@ export const App = () => {
 							<Route
 								path='/ingredients/:id'
 								element={<IngredientModalPage />}
+							/>
+							<Route path='/feed/:number' element={<FeedInfoModalPage />} />
+							<Route
+								path='/profile/orders/:number'
+								element={<FeedInfoModalPage />}
 							/>
 						</Routes>
 					)}

@@ -14,6 +14,7 @@ import {
 	IIngredientsResponse,
 	ILoginRequest,
 	ILoginResponse,
+	IOrderByNumberResponse,
 	IOrderResponse,
 	IRefreshTokenResponse,
 	IRegisterResponse,
@@ -94,6 +95,16 @@ export const getOrderApi = (param: string[]) =>
 			ingredients: param,
 		}),
 	});
+
+export const getOrderByNumberApi = (param: string) =>
+	fetch(`${ORDER_URL}/${param}`, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json;charset=utf-8',
+		} as HeadersInit,
+	})
+		.then(checkResponse<IServerResponse<IOrderByNumberResponse>>)
+		.then(checkSuccess<IOrderByNumberResponse>);
 
 export const forgotPasswordApi = (email: string) =>
 	fetch(PASSWORD_RESET_URL, {

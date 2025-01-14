@@ -9,6 +9,9 @@ import ProfilePage from './profile';
 import NotFound from './not-found';
 import UserPage from './user';
 import ProfileOrdersPage from './profile/orders';
+import FeedPage from './feed';
+import FeedInfoPage from './feed/feed-info';
+import FeedInfoModalPage from './feed/feed-info-modal';
 
 export {
 	HomePage,
@@ -22,4 +25,7 @@ export {
 	NotFound,
 	UserPage,
 	ProfileOrdersPage,
+	FeedPage,
+	FeedInfoPage,
+	FeedInfoModalPage,
 };

@@ -45,7 +45,9 @@ const AppHeader: React.FC = () => {
 						</div>
 					</li>
 					<li>
-						<Logo />
+						<NavLink to={'/'}>
+							<Logo />
+						</NavLink>
 					</li>
 					<li className={style.li}>
 						<div className={style.profile}>

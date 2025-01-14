@@ -26,7 +26,7 @@ interface IFailedIngredientsAction {
 	payload: string;
 }
 
-type IIngredientsAction =
+export type IIngredientsAction =
 	| ILoadingIngredientsAction
 	| ISuccessIngredientsAction
 	| IFailedIngredientsAction;

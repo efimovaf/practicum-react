@@ -23,7 +23,7 @@ export const addConstructorItem =
 	(item: IIngredient) => (dispatch: AppDispatch) => {
 		dispatch({
 			type: ADD_CONSTRUCTOR_INGREDIENTS_ITEM,
-			payload: { ...item, _key: uuidv4() },
+			payload: { ...item, _key: uuidv4(), index: 0 },
 		});
 	};
 

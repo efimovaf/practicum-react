@@ -15,3 +15,5 @@
 - линтинг `npm run lint`
 - тесты jest `npm test`
 - тесты cypress `npm run cypress`
+
+### Ссылка на стенд - http://stellarmarket.students.nomorepartiesco.ru/

@@ -34,6 +34,7 @@ const BurgerIngredientsGroupItem: React.FC<IBurgerIngredientsGroupItem> = (
 			to={`/ingredients/${id}`}
 			state={{ backgroundLocation: location }}>
 			<div
+				data-cy={`${item.type === 'bun' ? 'bun' : 'ingredient'}_${id}`}
 				ref={dragRef}
 				className={style.item}
 				role='presentation'

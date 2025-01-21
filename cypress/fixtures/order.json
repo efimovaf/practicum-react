@@ -1,0 +1,105 @@
+{
+	"success": true,
+	"name": "Флюоресцентный астероидный традиционный-галактический экзо-плантаго люминесцентный бургер",
+	"order": {
+		"ingredients": [
+			{
+				"_id": "8",
+				"name": "Флюоресцентная булка R2-D3",
+				"type": "bun",
+				"proteins": 44,
+				"fat": 26,
+				"carbohydrates": 85,
+				"calories": 643,
+				"price": 988,
+				"image": "https://code.s3.yandex.net/react/code/bun-01.png",
+				"image_mobile": "https://code.s3.yandex.net/react/code/bun-01-mobile.png",
+				"image_large": "https://code.s3.yandex.net/react/code/bun-01-large.png",
+				"__v": 0
+			},
+			{
+				"_id": "3",
+				"name": "Филе Люминесцентного тетраодонтимформа",
+				"type": "main",
+				"proteins": 44,
+				"fat": 26,
+				"carbohydrates": 85,
+				"calories": 643,
+				"price": 988,
+				"image": "https://code.s3.yandex.net/react/code/meat-03.png",
+				"image_mobile": "https://code.s3.yandex.net/react/code/meat-03-mobile.png",
+				"image_large": "https://code.s3.yandex.net/react/code/meat-03-large.png",
+				"__v": 0
+			},
+			{
+				"_id": "14",
+				"name": "Мини-салат Экзо-Плантаго",
+				"type": "main",
+				"proteins": 1,
+				"fat": 2,
+				"carbohydrates": 3,
+				"calories": 6,
+				"price": 4400,
+				"image": "https://code.s3.yandex.net/react/code/salad.png",
+				"image_mobile": "https://code.s3.yandex.net/react/code/salad-mobile.png",
+				"image_large": "https://code.s3.yandex.net/react/code/salad-large.png",
+				"__v": 0
+			},
+			{
+				"_id": "15",
+				"name": "Сыр с астероидной плесенью",
+				"type": "main",
+				"proteins": 84,
+				"fat": 48,
+				"carbohydrates": 420,
+				"calories": 3377,
+				"price": 4142,
+				"image": "https://code.s3.yandex.net/react/code/cheese.png",
+				"image_mobile": "https://code.s3.yandex.net/react/code/cheese-mobile.png",
+				"image_large": "https://code.s3.yandex.net/react/code/cheese-large.png",
+				"__v": 0
+			},
+			{
+				"_id": "9",
+				"name": "Соус традиционный галактический",
+				"type": "sauce",
+				"proteins": 42,
+				"fat": 24,
+				"carbohydrates": 42,
+				"calories": 99,
+				"price": 15,
+				"image": "https://code.s3.yandex.net/react/code/sauce-03.png",
+				"image_mobile": "https://code.s3.yandex.net/react/code/sauce-03-mobile.png",
+				"image_large": "https://code.s3.yandex.net/react/code/sauce-03-large.png",
+				"__v": 0
+			},
+			{
+				"_id": "8",
+				"name": "Флюоресцентная булка R2-D3",
+				"type": "bun",
+				"proteins": 44,
+				"fat": 26,
+				"carbohydrates": 85,
+				"calories": 643,
+				"price": 988,
+				"image": "https://code.s3.yandex.net/react/code/bun-01.png",
+				"image_mobile": "https://code.s3.yandex.net/react/code/bun-01-mobile.png",
+				"image_large": "https://code.s3.yandex.net/react/code/bun-01-large.png",
+				"__v": 0
+			}
+		],
+		"_id": "678e81d1133acd001be4b920",
+		"owner": {
+			"name": "Test",
+			"email": "test@mail.ru",
+			"createdAt": "2024-11-16T17:07:40.559Z",
+			"updatedAt": "2024-11-30T12:52:53.700Z"
+		},
+		"status": "done",
+		"name": "Флюоресцентный астероидный традиционный-галактический экзо-плантаго люминесцентный бургер",
+		"createdAt": "2025-01-20T17:03:13.262Z",
+		"updatedAt": "2025-01-20T17:03:13.908Z",
+		"number": 66175,
+		"price": 11521
+	}
+}

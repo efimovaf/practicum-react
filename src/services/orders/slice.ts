@@ -8,7 +8,7 @@ interface IFeedState {
 	connectionError: string | null;
 }
 
-const initialState: IFeedState = {
+export const initialState: IFeedState = {
 	status: WebsocketStatus.OFFLINE,
 	dataOrders: {
 		orders: [],

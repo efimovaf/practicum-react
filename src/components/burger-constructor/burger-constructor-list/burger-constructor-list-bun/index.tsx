@@ -38,7 +38,7 @@ const BurgerConstructorListBun: React.FC<IBurgerConstructorListBun> = ({
 	const isActive = isOver && canDrop;
 
 	return (
-		<div ref={dropTarget}>
+		<div ref={dropTarget} data-cy={`bun_list_${type}`}>
 			{bun ? (
 				<ConstructorElement
 					isLocked

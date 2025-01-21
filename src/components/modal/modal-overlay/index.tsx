@@ -6,7 +6,14 @@ interface IModalOverlay {
 }
 
 const ModalOverlay: React.FC<IModalOverlay> = ({ onClose }) => {
-	return <div className={style.main} role='presentation' onClick={onClose} />;
+	return (
+		<div
+			data-cy='modal_overlay'
+			className={style.main}
+			role='presentation'
+			onClick={onClose}
+		/>
+	);
 };
 
 export default ModalOverlay;

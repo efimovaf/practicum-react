@@ -8,7 +8,7 @@ interface IProfileOrdersState {
 	connectionError: string | null;
 }
 
-const initialState: IProfileOrdersState = {
+export const initialState: IProfileOrdersState = {
 	status: WebsocketStatus.OFFLINE,
 	profileOrders: {
 		orders: [],

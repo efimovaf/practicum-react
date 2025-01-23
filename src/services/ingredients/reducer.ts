@@ -31,7 +31,7 @@ export type IIngredientsAction =
 	| ISuccessIngredientsAction
 	| IFailedIngredientsAction;
 
-const initialState: IIngredientsState = {
+export const initialState: IIngredientsState = {
 	data: [],
 	dataRequest: false,
 	dataFailed: false,

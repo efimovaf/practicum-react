@@ -53,9 +53,12 @@ const BurgerConstructorList: React.FC = () => {
 	return (
 		<div className={style.main}>
 			<BurgerConstructorListBun type={'top'} />
-			<div ref={dropIngredientsTarget} className={style.listRef}>
+			<div
+				ref={dropIngredientsTarget}
+				className={style.listRef}
+				data-cy='ingredients_list'>
 				{ingredients && ingredients.length > 0 ? (
-					<div className={style.list}>
+					<div data-cy='ingredients_item' className={style.list}>
 						{ingredients.map((it) => (
 							<ConstructorItem key={it._key} item={it} moveCard={moveCard} />
 						))}

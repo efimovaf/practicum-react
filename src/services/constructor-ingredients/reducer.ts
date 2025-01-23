@@ -44,7 +44,7 @@ export type IConstructorIngredientsAction =
 	| IClearCurrentIngredientAction
 	| ISortCurrentIngredientAction;
 
-const initialState: IConstructorIngredientsState = {
+export const initialState: IConstructorIngredientsState = {
 	bun: undefined,
 	ingredients: [],
 };

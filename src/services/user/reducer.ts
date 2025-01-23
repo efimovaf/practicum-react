@@ -18,7 +18,7 @@ interface ISetUserAction {
 
 export type IUserAction = ISetAuthCheckedAction | ISetUserAction;
 
-const initialState: IUserState = {
+export const initialState: IUserState = {
 	user: undefined,
 	isAuthChecked: false,
 };

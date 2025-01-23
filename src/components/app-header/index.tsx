@@ -54,6 +54,7 @@ const AppHeader: React.FC = () => {
 							<NavLink to={'/profile'} className={style.link}>
 								{({ isActive }) => (
 									<NavigationLink
+										dataCy={'profile_link'}
 										isActive={isActive}
 										label={user?.name ?? 'Личный кабинет'}
 										icon={

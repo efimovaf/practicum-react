@@ -42,7 +42,7 @@ const Modal: React.FC<IModal> = ({ children, title, onClose }) => {
 
 	const content = (
 		<>
-			<div className={style.main}>
+			<div data-cy='modal' className={style.main}>
 				<header className={style.header}>
 					<p className='text text_type_main-large'>{title}</p>
 					<CloseIcon

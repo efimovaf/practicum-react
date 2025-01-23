@@ -84,6 +84,7 @@ const ConstructorItem: React.FC<IConstructorElement> = ({ item, moveCard }) => {
 
 	return (
 		<div
+			data-cy={`ingredient_item_${id}`}
 			key={item._key}
 			ref={ref}
 			className={style.item}

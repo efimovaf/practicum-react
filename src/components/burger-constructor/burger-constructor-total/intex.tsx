@@ -55,6 +55,7 @@ const BurgerConstructorTotal: React.FC = () => {
 				<CurrencyIcon className={style.totalIcon} type='primary' />
 			</div>
 			<Button
+				data-cy='create_order_btn'
 				htmlType='button'
 				type='primary'
 				size='large'

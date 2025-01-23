@@ -45,7 +45,7 @@ export type IOrderAction =
 	| IClearOrderAction
 	| IOrderByNumberAction;
 
-const initialState: IOrderState = {
+export const initialState: IOrderState = {
 	order: undefined,
 	orderRequest: false,
 	orderFailed: false,
